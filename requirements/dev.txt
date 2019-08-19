@@ -1,0 +1,7 @@
+pip-tools
+
+# installs base + tests requirements
+-r _test.txt
+
+# current module
+-e .[test]

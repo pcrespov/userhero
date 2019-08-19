@@ -1,0 +1,5 @@
+-r _base.txt
+
+pytest
+
+devpi-client

@@ -1,10 +1,17 @@
+import os
+import sys
 from pathlib import Path
-from setuptools import setup, find_packages
 
-install_requirements = []
-test_requirements = [
-    'pytest'
-]
+import re
+from setuptools import find_packages, setup
+
+here = Path(sys.argv[0] if __name__ == "__main__" else __file__).resolve().parent
+
+def read_reqs( reqs_path: Path):
+    return re.findall(r'(^[^#-][\w]+[-~>=<.\w]+)', reqs_path.read_text(), re.MULTILINE)
+
+install_requirements = read_reqs( here / "requirements" / "_base.in" )
+test_requirements = read_reqs( here / "requirements" / "_test.txt" )
 
 readme = Path( here / "README.md" ).read_text()
 
@@ -12,6 +19,7 @@ setup(
     name='userhero',
     version='0.1.0',
     author="Pedro Crespo (pcrespov)",
+    author_email="pcrespov",
     description="Simple library of fake users with hero profiles",
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
