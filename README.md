@@ -8,3 +8,4 @@ Simple library that provide superhero profile as users
 
  - https://www.superherodb.com/
  - http://avatars.adorable.io/
+ - https://ui-avatars.com/
